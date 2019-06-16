@@ -1,12 +1,11 @@
-@import "infinte.css";
+@import "infinite.css";
 body {
     padding-top: 8px;
-    font-family: 'barlow', sans-serif;
+    font-family: 'Barlow', sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
     -webkit-font-smoothing: antialiased;
-    background: #1d81bb
-
+    background: #1d81bb;
 }
 
 a {
@@ -26,18 +25,20 @@ h2 {
     color: #fff;
 }
 
-/*---- nav bar and all items are added here, most code is not valid to this 
-part of the index since its not the same user info or data.... you will need to pull
-from another link or page.----*/
+/* Nav
+-------------------------------------------------- */
 
-.navbar{
+.navbar {
+    /* background: linear-gradient(-68deg, #ac32e4, #4801ff);
+    */
     background: transparent !important;
-
+    /*box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.25);
+*/
 }
 
 .navbar .description {
     color: #fff;
-    font-size:.75rem;
+    font-size: .75rem;
 }
 
 .fas {
@@ -48,15 +49,18 @@ a.navbar-brand:hover {
     opacity: .75;
 }
 
-/*--- ALL BILLBOARD AND JUMBOTRON CODE IS TO LISTED HERE!!----*/
+/* Billboard
+-------------------------------------------------- */
 
 .jumbotron {
     background-color: transparent;
-    background-position: 0px 0px;
+    background-position: 0px 0px; 
+    /* background-repeat: repeat-x; */
+    /* background: linear-gradient(-68deg, rgba(172, 50, 228, .25), rgba(172, 50, 228, .25)), url("../images/preview.jpg"); */
     color: rgba(255, 255, 255, 1);
     text-align: center;
     border-radius: 0;
-    box-shadow:inset 0 2px 4px 0 rgba(0, 0, 0, .5);
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, .5);
     height: 260px;
     text-transform: uppercase;
     font-weight: 800;
@@ -68,10 +72,152 @@ a.navbar-brand:hover {
     animation-fill-mode: forwards;
 }
 
-.display-3{
+
+
+.display-3 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+}
+
+.currenttime {
     font-size: 3.25rem;
     font-weight: 900;
     letter-spacing: 2px;
     text-shadow: 2px 2px rgba(65, 188, 251, 1);
 }
 
+.error {
+    display: none;
+    margin-left: 10px;
+}
+
+.error_show {
+    color: red;
+    margin-left: 10px;
+}
+
+/* Table Styles
+-------------------------------------------------- */
+
+#schedule-wrapper {
+    margin-bottom: 30px;
+}
+
+table {
+    background-color: #fff;
+}
+
+td {
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.4;
+}
+
+th {
+    font-size: .8rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.32);
+    padding-top: 24px;
+    padding-bottom: 20px;
+    color: #fff;
+    font-weight: 900;
+}
+
+.table thead th {
+    vertical-align: middle !important;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+#form-wrapper {
+    margin-top: -80px;
+    margin-bottom: 30px;
+    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#form-wrapper h2 {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 4px 8px;
+}
+
+label {
+    font-size: .8rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.btn-primary {
+    background-color: rgba(65, 188, 251, 1);
+    border: 1px solid rgba(65, 188, 251, .5);
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.form-control,
+.form-control-sm {
+    border: 0 !important;
+    outline: 0 !important;
+    background: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, .5) !important;
+    border-radius: 0;
+}
+
+::placeholder {
+    opacity: 0.4 !important;
+    font-size: .75rem;
+}
+
+input.invalid,
+textarea.invalid {
+    border: 2px solid red;
+}
+
+input.valid,
+textarea.valid {
+    border: 2px solid green;
+}
+
+.alert {
+    padding: .5rem 1rem;
+    margin-top: 5px
+}
+
+/* Footer -------------------------------------------------- */
+
+footer {
+    width: 100%;
+    height: 60px;
+    display: block;
+    color: #fff !important;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .75rem;
+    background: linear-gradient(-68deg, rgba(172, 50, 228, .2), rgba(72, 1, 255, .2));
+    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.25);
+}
+
+footer a {
+    text-decoration: underline;
+}
+
+@media (max-width: 650px) {
+    .description {
+        display: none;
+    }
+    .navbar>.container {
+        justify-content: center;
+    }
+}

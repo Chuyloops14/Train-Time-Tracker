@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <title>Train Scheduler</title>
-    <meta name="viewport" content="width-device-width, initial-scale-1">
-    <link rel="icon" type="image/ico" sizes="32x32" href="assests/images/favicon-train.ico">
+<html>
 
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Train Scheduler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/ico" sizes="32x32" href="favicon-train.ico">
+ 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Barlow:500,700,900" rel="stylesheet">
-    
+
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assests/css/style.css" />
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -20,49 +23,107 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
-   <!-- <link tpye="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebase/2.5.1?firebase.css" /> -->
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
 
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class ="navbar-brand d-inline-block" href="#">
-                <i class="fas fa-train d-inlinr-block align-middle"></i>
-                <h1 class="fas fa train d-inline-block align-middle"></h1> 
+            <a class="navbar-brand d-inline-block" href="#">
+                <i class="fas fa-train d-inline-block align-middle"></i>
+                <h1 class="display-3 d-inline-block align-middle">Train Scheduler </h1>
             </a>
-            <div class="descritption ml-auto">
+            <div class="description ml-auto">
                 Up-to-the-Minute Train Schedule
             </div>
         </div>
     </nav>
+
     </div>
     </nav>
 
     <div class="jumbotron">
         <div class="container">
             <div>Current Time:</div>
-        <div class="currenttime"></div>
-    </div>
-</div>
+<div class="currenttime"></div>
 
-<div class="container main-wrap">
-    <div class="row">
-        <div class="col-md-12">
-
-            <div id="form-wrapper">
-                <h2>Add your special Train</h2>
-                <form id="trian-form">
-
-                    <dic class="form-row">
-                        <dic class="form-group col-sm-6 col-xs-12">
-                            <label for="train-name">Train Name</label>
-                            <input type="text" class="fotm-control form-control-sm" id="train-name" aria-placeholder="Hogwarts Express"></inout>
-                        </dic>
-                    </dic>
-                </form>
-            </div>
         </div>
     </div>
-</div>
+
+    <div class="container main-wrap">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div id="form-wrapper">
+                    <h2>Add your Special Train</h2>
+                    <form id="train-form">
+
+                        <div class="form-row">
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <label for="train-name">Train Name</label>
+                                <input type="text" class="form-control form-control-sm" id="train-name" placeholder="jesus train">
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <label for="train-destination">Destination</label>
+                                <input type="text" class="form-control form-control-sm" id="train-destination" placeholder="UCR">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-lg-5 col-sm-6 col-xs-12">
+                                <label for="train-time-first">First Train Time (24 hr)</label>
+                                <input type="text" class="form-control form-control-sm" id="train-time-first" placeholder="HH:MM">
+                                <div id="time-wrapper"></div>
+                            </div>
+                            <div class="form-group col-lg-5 col-sm-6 col-xs-12">
+                                <label for="train-frequency">Frequency (min)</label>
+                                <input type="number" class="form-control form-control-sm" id="train-frequency" placeholder="25">
+                                <div id="freq-wrapper"></div>
+                            </div>
+                            <div class="form-group col-lg-2 col-sm-12 d-flex align-items-end flex-column">
+                                <button class="btn btn-primary btn-sm btn-block mt-auto" type="submit" id="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="schedule-wrapper" class="table-responsive">
+                    <h2>Current Train Schedule</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Train Name</th>
+                                <th>Destination</th>
+                                <th>Frequency (min)</th>
+                                <th>Next Arrival</th>
+                                <th>Minutes Away (min)</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="train-info">
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <footer class="footer d-flex align-items-center">
+        <div class="container">
+            <span>Copyright &copy;2018 | Built by Chuyloops </a></span>
+        </div>
+    </footer>
+
+<div id="firebaseui-auth-container"></div>
+<!--<div id="loader">Loading...</div> -->
+                </div>
+              </div>
+            </div>
+          </div>
 </body>
+<script src="assets/javascript/jquery.pulse.min.js"></script>
+
+<script src="assests/java/app.js"></script>
+
 </html>
